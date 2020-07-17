@@ -1,0 +1,18 @@
+import telebot
+
+bot = telebot.TeleBot("1292362698:AAGy_LaiI9eGstt7OB5HQtWx7vzWz6gWJRY")
+
+@bot.message_handler(commands=['start'])
+def start_message(message):
+    bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
+
+@bot.message_handler(content_types=['text'])
+def send_text(message):
+	bot.send_message(message.chat.id, 'Вы отправлили текст')
+    
+@bot.message_handler(content_types=['photo'])
+def send_photo(message):
+	bot.send_message(message.chat.id, 'Вы отправлили изображение')
+    
+
+bot.polling()
